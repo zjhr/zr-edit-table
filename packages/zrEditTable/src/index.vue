@@ -151,7 +151,7 @@ export default {
 	components: {
 		editTableElement
 	},
-	destroyed() {
+	destroyed () {
 		if (!this.notClickToEdit && !this.notCloseEdit) {
 			document.removeEventListener('click', this.removeCurrentRowFun, false)
 		}
@@ -164,28 +164,28 @@ export default {
 		menuArr: {
 			// 右键数据
 			type: Array,
-			default() {
+			default () {
 				return [] // {name: "合并表格",fun: this.mergeFun}
 			}
 		},
 		mergeArr: {
 			// 合并表格数据数组
 			type: Array,
-			default() {
+			default () {
 				return [] // { "rowId": 1, "colKey": "sex", "rowspan": 3, "colspan": 1}
 			}
 		},
 		selectDirection: {
 			// 控制选择框选择方向
 			type: Array,
-			default() {
+			default () {
 				return ['up', 'down', 'left', 'right']
 			}
 		},
 		notEditColKeyArr: {
 			// 控制不可编辑列
 			type: Array,
-			default() {
+			default () {
 				return []
 			}
 		},
@@ -194,14 +194,14 @@ export default {
 		headData: {
 			// 列数据
 			type: Array,
-			default() {
+			default () {
 				return []
 			}
 		},
 		data: {
 			// table数据
 			type: Array,
-			default() {
+			default () {
 				return []
 			}
 		},
@@ -223,7 +223,7 @@ export default {
 		},
 		rules: Object // 校验规则
 	},
-	data() {
+	data () {
 		return {
 			contextmenuShow: false, // 控制右键菜单
 			heightStyle: { height: '100%' },
@@ -253,7 +253,7 @@ export default {
 		}
 	},
 	computed: {
-		cColLists() {
+		cColLists () {
 			// 记录列key数组
 			const arr = this.$slots['default']
 				? this.$slots['default'].map(v => v.componentOptions.propsData.prop)
@@ -261,14 +261,14 @@ export default {
 			return this.headData.map(v => v.prop).concat(arr)
 		}
 	},
-	created() {
+	created () {
 		if (this.$attrs.height) {
 			this.heightStyle = { height: this.$attrs.height }
 		} else if (this.$attrs['max-height']) {
 			this.heightStyle = { 'max-height': this.$attrs['max-height'] }
 		}
 	},
-	mounted() {
+	mounted () {
 		this.$nextTick(() => {
 			// console.log(this.$parent);
 			this.isForm = this.$parent.$options.componentName === 'ElForm'
@@ -281,7 +281,7 @@ export default {
 		})
 	},
 	methods: {
-		isEmptyObject(obj) {
+		isEmptyObject (obj) {
 			// 判断空对象
 			let name
 			for (name in obj) {
@@ -291,7 +291,7 @@ export default {
 			}
 			return true
 		},
-		tableRowClassNameFun({ row, rowIndex }) {
+		tableRowClassNameFun ({ row, rowIndex }) {
 			// 斑马纹和编辑样式
 			const notClickToEdit = this.notClickToEdit ? ' not-click-edit' : ''
 			if (this.headData.length || this.editClass) {
@@ -306,18 +306,18 @@ export default {
 				return '' + notClickToEdit
 			}
 		},
-		cellClassNameFun({ row, column, rowIndex, columnIndex }) {
+		cellClassNameFun ({ row, column, rowIndex, columnIndex }) {
 			// 设置单元格classname
 			return 'col-' + columnIndex
 		},
-		reLoadLatoutFun() {
+		reLoadLatoutFun () {
 			this.notRowIndexs = {}
 			this.notColIndexs = {}
 			this.$nextTick(() => {
 				this.setDomFun()
 			})
 		},
-		getStgTtgFun() {
+		getStgTtgFun () {
 			// 获取sTg,tTg数据
 			const { row: sRowIndex, col: sColIndex } = this.sTg.dataset
 			return {
@@ -327,7 +327,7 @@ export default {
 				tColIndex: this.tRowCol[1]
 			}
 		},
-		removeCurrentRowFun(event) {
+		removeCurrentRowFun (event) {
 			// 移除表格选中编辑状态
 			event.preventDefault()
 			return new Promise(resolve => {
@@ -355,7 +355,7 @@ export default {
 				}
 			})
 		},
-		removeHeadColFun(event) {
+		removeHeadColFun (event) {
 			// 移除表头选中编辑状态
 			if (this.editHeadColumn) {
 				this.editHeadColumn.headEdit = false
@@ -366,7 +366,7 @@ export default {
 				document.removeEventListener('click', this.removeHeadColFun, false)
 			}
 		},
-		removeSelectBoxFun(event) {
+		removeSelectBoxFun (event) {
 			// document的mousedown事件后，删除处理selectBox
 			if (event) {
 				let target = event.target
@@ -392,7 +392,7 @@ export default {
 			}
 			document.removeEventListener('mousedown', this.removeSelectBoxFun, false)
 		},
-		clearSelectBoxFun() {
+		clearSelectBoxFun () {
 			// 删除处理selectBox显示隐藏，和消除记录
 			this.selectBoxShow = false
 			this.sTg = null
@@ -400,13 +400,13 @@ export default {
 			this.sRowCol = null
 			this.tRowCol = null
 		},
-		changeMouseType(event) {
+		changeMouseType (event) {
 			// 改变鼠标状态
 			this.mouseType = event.type
 			document.addEventListener('mousedown', this.removeSelectBoxFun, false)
 			document.removeEventListener('mouseup', this.changeMouseType, false)
 		},
-		bodyWrapperFun(event) {
+		bodyWrapperFun (event) {
 			// 滚动条事件
 			clearTimeout(this.time)
 			this.time = setTimeout(() => {
@@ -418,7 +418,7 @@ export default {
 				}
 			}, 10)
 		},
-		setDomFun() {
+		setDomFun () {
 			const tableElm = this.$refs.table.$el
 			const tableElmChildren = Array.from(tableElm.children)
 			// console.dir(this.$slots["default"]);
@@ -448,7 +448,7 @@ export default {
 			})
 			tableElm.addEventListener('mousedown', this.selectDownFun, false)
 		},
-		spanMethodFun({ row, column, rowIndex, columnIndex }) {
+		spanMethodFun ({ row, column, rowIndex, columnIndex }) {
 			// 合并表格控制
 			// console.log({ row, column, rowIndex, columnIndex });
 			const obj = {
@@ -479,13 +479,13 @@ export default {
 						const csum = v.colspan + cIndex // 记录跨列总数
 						const rarr = []
 						const carr = []
-						for (let i = rsum; i--; ) {
+						for (let i = rsum; i--;) {
 							if (i > rIndex) {
 								this.notRowIndexs[i + '' + columnIndex] = i
 								rarr.push(i)
 							}
 						}
-						for (let t = csum; t--; ) {
+						for (let t = csum; t--;) {
 							if (t >= cIndex) {
 								this.notColIndexs[t + '' + rowIndex] = t
 								carr.push(t)
@@ -503,7 +503,7 @@ export default {
 			}
 			return obj
 		},
-		mergeFun(isMerge = true) {
+		mergeFun (isMerge = true) {
 			// true合并表格,/false 拆分合并
 			if (this.selectBoxShow) {
 				const {
@@ -526,7 +526,7 @@ export default {
 				// console.log("includeCells::", includeCells);
 				const strIncludeCells = includeCells.map(v => v.rowId + '-' + v.colKey)
 				// console.log("strIncludeCells::", strIncludeCells);
-				for (let i = 0; i < this.mergeArr.length; ) {
+				for (let i = 0; i < this.mergeArr.length;) {
 					const str = this.mergeArr[i].rowId + '-' + this.mergeArr[i].colKey
 					console.log('str::', str)
 					if (strIncludeCells.includes(str)) {
@@ -559,7 +559,7 @@ export default {
 				}
 			}
 		},
-		rowContextmenuFun(row, _, event) {
+		rowContextmenuFun (row, _, event) {
 			// 右键时候，处理右键菜单
 			event.stopPropagation()
 			event.preventDefault()
@@ -581,7 +581,7 @@ export default {
 			}
 			this.$emit('row-contextmenu', row, event)
 		},
-		setSelectBoxStyleFun() {
+		setSelectBoxStyleFun () {
 			// 设置选择框样式
 			this.headHeight = this.headElm.scrollHeight
 			if (this.sTg) {
@@ -636,7 +636,7 @@ export default {
 				}
 			}
 		},
-		selectDownFun(event) {
+		selectDownFun (event) {
 			// 选择框事件，mousedown
 			console.dir(event)
 			if (event.which === 1) {
@@ -666,7 +666,7 @@ export default {
 				}
 			}
 		},
-		includeCellsFun(
+		includeCellsFun (
 			arr = this.mergeArr,
 			sRowIndex,
 			sColIndex,
@@ -697,7 +697,7 @@ export default {
 				return judgeRow && judgeCol
 			})
 		},
-		cellMouseEnterFun(row, column, cell, event) {
+		cellMouseEnterFun (row, column, cell, event) {
 			// 单元格hover进入时候
 			if (this.sTg && this.mouseType === 'mousedown') {
 				// console.log("进入", row, column, cell, event);
@@ -815,7 +815,7 @@ export default {
 			}
 			this.$emit('cell-mouse-enter', row, column, cell, event)
 		},
-		async headerClickFun(column, event) {
+		async headerClickFun (column, event) {
 			// 表头点击事件
 			event.stopPropagation()
 			if (
@@ -837,7 +837,7 @@ export default {
 			}
 			// this.$emit("header-click", column, event);
 		},
-		rowClickFun(row, column, event) {
+		rowClickFun (row, column, event) {
 			// 选中事件
 			event.stopPropagation()
 			if (this.editHeadColumn) {
@@ -865,7 +865,7 @@ export default {
 				}
 			}
 		},
-		currentChangeFun(currentRow, oldCurrentRow) {
+		currentChangeFun (currentRow, oldCurrentRow) {
 			// 选中发生改变时候，处理选择框改变
 			this.$nextTick(() => {
 				if (this.hasselect) {
@@ -877,6 +877,9 @@ export default {
 	}
 }
 </script>
+<style lang="scss">
+@import './zrEditTable.scss';
+</style>
 <style lang="scss" scoped>
 .head__checkbox {
 	margin-right: 10px;
