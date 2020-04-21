@@ -159,7 +159,7 @@ Vue.use(zrEditTable)
     <td>-</td>
   </tr>
   <tr>
-    <td>$slot</td>
+    <td>$slot left</td>
     <td>具体说明和[elementUi的table](https://element.eleme.cn/2.5/#/zh-CN/component/table)一样</td>
     <td>-</td>
     <td>-</td>

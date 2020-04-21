@@ -893,4 +893,9 @@ export default {
 .z-clr-white {
 	color: white;
 }
+.m-pa-lt {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 </style>

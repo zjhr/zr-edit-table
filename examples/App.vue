@@ -44,7 +44,7 @@
 <script>
 export default {
 	name: 'App',
-	data() {
+	data () {
 		return {
 			mergeArr: [],
 			headData: [
@@ -53,8 +53,6 @@ export default {
 					prop: 'name',
 					width: '180',
 					edit: 'text|请输入内容',
-					icon: ['icon-nantouxiang-1'],
-					text_left: true,
 					headCheckBox: {
 						checked: false,
 						disabled: false,
@@ -154,7 +152,7 @@ export default {
 		}
 	},
 	methods: {
-		adddataFun() {
+		adddataFun () {
 			this.model.data.push({
 				id: '0000',
 				name: '测试00000',
@@ -165,13 +163,13 @@ export default {
 				address: '上海市普陀区金沙江路 1517 弄'
 			})
 		},
-		mergeFun() {
+		mergeFun () {
 			this.$refs.tabel.mergeFun()
 		},
-		relieveFun() {
+		relieveFun () {
 			this.$refs.tabel.mergeFun(false)
 		},
-		addheadFun() {
+		addheadFun () {
 			this.headData.push({
 				label: '地址2地址2地址2地址2地址2地址2',
 				prop: 'address1',
