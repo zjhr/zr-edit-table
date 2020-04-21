@@ -41,7 +41,6 @@ Vue.use(zrEditTable)
     data: { "1": "是", "2": "否" },//特殊类型的编辑需要用到的数据
     //checkbox:{ key1(选中的值): "是"(描述), key2(没选中的值): "否"(描述) }
     //select:[{ label: "男"(ui显示的值), value: 1(数据获取的值) }]
-    text_left: true,//表格文字在图标哪一边
     headCheckBox: {//当有该属性时候，表头带有checkbox
       checked: false,//是否选中
       disabled: false,//是否屏蔽

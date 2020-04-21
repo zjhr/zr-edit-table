@@ -1,6 +1,6 @@
 {
   "name": "zr-edit-table",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "基于vue,elementui二次封装的可编辑table",
   "private": false,
   "main": "lib/zr-edit-table.common.js",

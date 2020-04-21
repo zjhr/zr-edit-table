@@ -58,7 +58,7 @@
 			@change="$emit('color-change',scope,item.prop)"
 			style="display: inherit;"
 		></el-color-picker>
-		<span
+		<div
 			v-if="!item.edit.includes('color') && !item.edit.includes('icon') && !item.edit.includes('checkbox')"
 		>
 			<template v-if="item.text_left">{{item | editText(scope)}}</template>
@@ -66,7 +66,7 @@
 				<my-icon v-for="(icon, index) in item.icon" :key="index" :use="icon" scale="1"></my-icon>
 			</template>-->
 			<template v-if="!item.text_left">{{item | editText(scope)}}</template>
-		</span>
+		</div>
 	</div>
 </template>
 
@@ -79,25 +79,25 @@ export default {
 		notEditColKeyArr: {
 			// 控制不可编辑列
 			type: Array,
-			default() {
+			default () {
 				return []
 			}
 		}
 	},
-	data() {
+	data () {
 		return {}
 	},
 	computed: {
-		cNotEdit() {
+		cNotEdit () {
 			// 控制不可以编辑的列数组
 			return this.notEditColKeyArr.includes(this.item.prop)
 		}
 	},
 	filters: {
-		editData(value, index = 1) {
+		editData (value, index = 1) {
 			return value.split('|')[index]
 		},
-		editText(item, scope) {
+		editText (item, scope) {
 			if (item.data && item.edit.includes('checkbox')) {
 				return item.data[scope.row[item.prop]]
 			}
