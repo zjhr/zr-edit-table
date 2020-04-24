@@ -13,8 +13,8 @@
 			@header-click="headerClickFun"
 			@row-click="rowClickFun"
 			@current-change="currentChangeFun"
-			class="zr-table g-pr z-hidden"
-			:class="{'zr-table__last':isForm}"
+			class="g-pr z-hidden"
+			:class="{'zr-table__last':fullClass || isForm,'zr-table-fullitem':fullClass}"
 			v-on="$listeners"
 			v-bind="$attrs"
 		>
@@ -211,6 +211,10 @@ export default {
 			default: false
 		},
 		editClass: Boolean, // 是否使用编辑table样式
+		fullClass: {
+			type: Boolean,
+			default: true
+		},
 		notClickToEdit: {
 			// 不使用点击后编辑状态
 			type: Boolean,

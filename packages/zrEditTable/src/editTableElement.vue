@@ -11,10 +11,10 @@
 		<el-checkbox
 			v-else-if="item.edit.includes('checkbox')"
 			size="medium"
-			:true-label="Object.keys(item.data)[0]"
-			:false-label="Object.keys(item.data)[1]"
+			:true-label="Object.keys(item.data||{})[0]||''"
+			:false-label="Object.keys(item.data||{})[1]||''"
 			v-model="scope.row[item.prop]"
-			class="pd3-table__edit-checkbox"
+			class="zr-table__edit-checkbox"
 			@change="$emit('checkbox-change',scope,item.prop)"
 		></el-checkbox>
 		<el-select
@@ -58,7 +58,7 @@
 			@change="$emit('color-change',scope,item.prop)"
 			style="display: inherit;"
 		></el-color-picker>
-		<div
+		<span
 			v-if="!item.edit.includes('color') && !item.edit.includes('icon') && !item.edit.includes('checkbox')"
 		>
 			<template v-if="item.text_left">{{item | editText(scope)}}</template>
@@ -66,7 +66,7 @@
 				<my-icon v-for="(icon, index) in item.icon" :key="index" :use="icon" scale="1"></my-icon>
 			</template>-->
 			<template v-if="!item.text_left">{{item | editText(scope)}}</template>
-		</div>
+		</span>
 	</div>
 </template>
 

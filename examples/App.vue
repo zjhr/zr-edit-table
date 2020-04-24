@@ -7,6 +7,7 @@
 			<zr-edit-table
 				ref="tabel"
 				size="mini"
+				notClickToEdit
 				:data="model.data"
 				:headData="headData"
 				highlight-current-row
@@ -18,6 +19,7 @@
 				headEdit
 				:mergeArr="mergeArr"
 				:menuArr="menuArr"
+				:fullClass="false"
 				style="width: 100%"
 			></zr-edit-table>
 		</el-form>实例2
@@ -69,6 +71,12 @@ export default {
 					data: { '1': '是', '2': '否' }
 				},
 				{
+					label: '是学生tf',
+					prop: 'isSBtf',
+					width: '80',
+					edit: 'checkbox',
+				},
+				{
 					label: '性别',
 					prop: 'sex',
 					width: '80',
@@ -115,7 +123,8 @@ export default {
 						sex: 1,
 						age: '22',
 						date: '2016-05-02',
-						address: '上海市普陀区金沙江路 1517 弄'
+						address: '上海市普陀区金沙江路 1517 弄',
+						isSBtf: false
 					},
 					{
 						id: 1,
@@ -124,7 +133,8 @@ export default {
 						sex: 0,
 						age: '22',
 						date: '2016-05-02',
-						address: '上海市普陀区金沙江路 1517 弄'
+						address: '上海市普陀区金沙江路 1517 弄',
+						isSBtf: false
 					}
 				]
 			},

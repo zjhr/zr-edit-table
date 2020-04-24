@@ -2,7 +2,7 @@
 
 ## 说明
 
-公共表格组件，带有编辑功能和合并列/行功能，基于[elementUi 的 table](https://element.eleme.cn/2.5/#/zh-CN/component/table)封装。
+表格组件，带有编辑功能和合并列/行功能，基于[elementUi 的 table](https://element.eleme.cn/2.5/#/zh-CN/component/table)封装。
 
 ## 快速上手
 
@@ -17,6 +17,8 @@ import zrEditTable from 'zr-edit-table'
 import 'zr-edit-table/lib/zr-edit-table.css'
 Vue.use(zrEditTable)
 ```
+
+## [例子](https://github.com/zjhr/zr-edit-table/blob/master/examples/App.vue)
 
 ## 参数
 
@@ -135,6 +137,13 @@ Vue.use(zrEditTable)
     <td>Boolean</td>
     <td>true|false</td>
     <td>默认有headData时候是true</td>
+  </tr>
+  <tr>
+    <td>fullClass</td>
+    <td>是否使用编辑table铺满td样式</td>
+    <td>Boolean</td>
+    <td>true|false</td>
+    <td>true</td>
   </tr>
   <tr>
     <td>notClickToEdit</td>
